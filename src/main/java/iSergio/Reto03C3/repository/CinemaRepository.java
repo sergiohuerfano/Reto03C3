@@ -21,7 +21,7 @@ public class CinemaRepository {
         return cinemaCrudRepository.findById(id);
     }
 
-    public Cinema save(Cinema a){
-        return cinemaCrudRepository.save(a);
+    public Cinema save(Cinema sala){
+        return cinemaCrudRepository.save(sala);
     }
 }

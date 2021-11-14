@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-// @CrossOrigin permite instrucciones de una fuente desconocida con los metodos GET, POST, PUT, DELETE
+// @CrossOrigin permite las instrucciones de una fuente desconocida y con los metodos GET, POST, PUT, DELETE
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RestController
 @RequestMapping("/api/Cinema")
@@ -30,8 +30,8 @@ public class CinemaController {
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cinema save(@RequestBody Cinema a){
-        return cinemaService.save(a);
+    public Cinema save(@RequestBody Cinema sala){
+        return cinemaService.save(sala);
     }
 
 
