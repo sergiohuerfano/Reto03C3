@@ -13,8 +13,8 @@ public class Reservacion implements Serializable {
     private Integer id;
     private Integer client;
     private Integer cinema;
-    private Date datestart;
-    private Date datefinish;
+    private Date startDate;
+    private Date devolutionDate;
     private String status;
 
     public Integer getId() {
@@ -41,20 +41,20 @@ public class Reservacion implements Serializable {
         this.cinema = cinema;
     }
 
-    public Date getDatestart() {
-        return datestart;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setDatestart(Date datestart) {
-        this.datestart = datestart;
+    public void setStartDate(Date datestart) {
+        this.startDate = startDate;
     }
 
-    public Date getDatefinish() {
-        return datefinish;
+    public Date getDevolutionDate() {
+        return devolutionDate;
     }
 
-    public void setDatefinish(Date datefinish) {
-        this.datefinish = datefinish;
+    public void setDevolutionDate(Date devolutionDate) {
+        this.devolutionDate = devolutionDate;
     }
 
     public String getStatus() {
