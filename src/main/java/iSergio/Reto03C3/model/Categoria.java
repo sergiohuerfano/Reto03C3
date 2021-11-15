@@ -1,10 +1,13 @@
 package iSergio.Reto03C3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
-@Table(name="categorias")
+@Table(name="categoria")
 public class Categoria implements Serializable {
 
     @Id
@@ -12,6 +15,10 @@ public class Categoria implements Serializable {
     private Integer id;
     private String name;
     private String description;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "categoria")
+    @JsonIgnoreProperties("categoria")
+    private List<Cinema> cinemas;
 
     public Integer getId() {
         return id;
@@ -35,5 +42,13 @@ public class Categoria implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Cinema> getCinemas() {
+        return cinemas;
+    }
+
+    public void setCinemas(List<Cinema> cinemas) {
+        this.cinemas = cinemas;
     }
 }

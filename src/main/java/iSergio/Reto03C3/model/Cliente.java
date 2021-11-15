@@ -1,7 +1,10 @@
 package iSergio.Reto03C3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="cliente")
@@ -14,6 +17,14 @@ public class Cliente implements Serializable {
     private String email;
     private String password;
     private Integer age;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
+    @JsonIgnoreProperties("cliente")
+    private List<Mensaje> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
+    @JsonIgnoreProperties("cliente")
+    private List<Reservacion> reservations;
 
     public Integer getId() {
         return id;
@@ -53,5 +64,21 @@ public class Cliente implements Serializable {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public List<Mensaje> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Mensaje> messages) {
+        this.messages = messages;
+    }
+
+    public List<Reservacion> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservacion> reservations) {
+        this.reservations = reservations;
     }
 }

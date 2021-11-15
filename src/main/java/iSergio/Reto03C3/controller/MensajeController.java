@@ -27,6 +27,10 @@ public class MensajeController {
         return mensajeService.getMensaje(id);
     }
 
+    /**
+     save llama al metodo POST con el item nuevo
+     @return guardar el nuevo elemento en la tabla Mensaje
+     */
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Mensaje save(@RequestBody Mensaje msj){

@@ -1,10 +1,13 @@
 package iSergio.Reto03C3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
-@Table(name="cinema")
+@Table(name="cinemas")
 public class Cinema implements Serializable {
 
     @Id
@@ -15,6 +18,19 @@ public class Cinema implements Serializable {
     private Integer category_id;
     private String name;
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name="categoria")
+    @JsonIgnoreProperties("cinemas")
+    private Categoria categoria;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
+    @JsonIgnoreProperties("cinemas")
+    private List<Mensaje> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
+    @JsonIgnoreProperties("cinemas")
+    private List<Reservacion> reservations;
 
     public Integer getId() {
         return id;
@@ -62,5 +78,29 @@ public class Cinema implements Serializable {
 
     public void setDescription(String description){
         this.description = description;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public List<Mensaje> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Mensaje> messages) {
+        this.messages = messages;
+    }
+
+    public List<Reservacion> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservacion> reservacion) {
+        this.reservations = reservacion;
     }
 }

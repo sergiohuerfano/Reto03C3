@@ -1,21 +1,32 @@
 package iSergio.Reto03C3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="reservas")
+@Table(name="reservations")
 public class Reservacion implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer client;
-    private Integer cinema;
     private Date startDate;
     private Date devolutionDate;
     private String status;
+
+
+    @ManyToOne
+    @JoinColumn(name="cinemaId")
+    @JsonIgnoreProperties("reservacion")
+    private Cinema cinema;
+
+    @ManyToOne
+    @JoinColumn(name="clienteId")
+    @JsonIgnoreProperties("reservacion")
+    private Cliente client;
 
     public Integer getId() {
         return id;
@@ -25,27 +36,11 @@ public class Reservacion implements Serializable {
         this.id = id;
     }
 
-    public Integer getClient() {
-        return client;
-    }
-
-    public void setClient(Integer client) {
-        this.client = client;
-    }
-
-    public Integer getCinema() {
-        return cinema;
-    }
-
-    public void setCinema(Integer cinema) {
-        this.cinema = cinema;
-    }
-
     public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date datestart) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
@@ -63,5 +58,21 @@ public class Reservacion implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Cinema getCinema() {
+        return cinema;
+    }
+
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
+    }
+
+    public Cliente getClient() {
+        return client;
+    }
+
+    public void setClient(Cliente client) {
+        this.client = client;
     }
 }
