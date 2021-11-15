@@ -13,19 +13,18 @@ public class Cinema implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     private String owner;
     private Integer capacity;
-    private Integer category_id;
-    private String name;
     private String description;
 
     @ManyToOne
-    @JoinColumn(name="categoria")
+    @JoinColumn(name="category")
     @JsonIgnoreProperties("cinemas")
-    private Categoria categoria;
+    private Categoria category;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
-    @JsonIgnoreProperties("cinemas")
+    @JsonIgnoreProperties({"cinemas"})
     private List<Mensaje> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
@@ -56,14 +55,6 @@ public class Cinema implements Serializable {
         this.capacity = capacity;
     }
 
-    public Integer getCategory_id() {
-        return category_id;
-    }
-
-    public void setCategory_id(Integer category_id) {
-        this.category_id = category_id;
-    }
-
     public String getName() {
         return name;
     }
@@ -80,12 +71,12 @@ public class Cinema implements Serializable {
         this.description = description;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Categoria getCategory() {
+        return category;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategory(Categoria category) {
+        this.category = category;
     }
 
     public List<Mensaje> getMessages() {

@@ -19,10 +19,10 @@ public class ClienteService {
     public Optional<Cliente> getCliente(int id){return clienteRepository.getCliente(id);}
 
     public Cliente save(Cliente cliente){
-        if(cliente.getId()==null){
+        if(cliente.getIdClient()==null){
             return clienteRepository.save(cliente);
         }else {
-            Optional<Cliente> clienteAux=clienteRepository.getCliente(cliente.getId());
+            Optional<Cliente> clienteAux=clienteRepository.getCliente(cliente.getIdClient());
             if(clienteAux.isEmpty()){
                 return clienteRepository.save(cliente);
             }else{

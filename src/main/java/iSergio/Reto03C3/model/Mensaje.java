@@ -1,5 +1,6 @@
 package iSergio.Reto03C3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -11,25 +12,26 @@ public class Mensaje implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idMessage;
     private String messagetext;
 
     @ManyToOne
-    @JoinColumn(name="clienteId")
-    @JsonIgnoreProperties("mensajes")
-    private Cliente client;
-
-    @ManyToOne
-    @JoinColumn(name="cinemaId")
-    @JsonIgnoreProperties("mensajes")
+    @JoinColumn(name="cinema")
+    @JsonIgnoreProperties({"messages","reservations"})
     private Cinema cinema;
 
-    public Integer getId() {
-        return id;
+    @ManyToOne
+    @JoinColumn(name="idClient")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Cliente client;
+
+
+    public Integer getIdMessage() {
+        return idMessage;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdMessage(Integer idMessage) {
+        this.idMessage = idMessage;
     }
 
     public String getMessagetext() {

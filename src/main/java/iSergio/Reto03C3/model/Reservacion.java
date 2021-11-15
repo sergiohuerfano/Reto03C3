@@ -1,10 +1,12 @@
 package iSergio.Reto03C3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.aspectj.bridge.Message;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="reservations")
@@ -12,28 +14,28 @@ public class Reservacion implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
     private String status;
 
 
     @ManyToOne
-    @JoinColumn(name="cinemaId")
-    @JsonIgnoreProperties("reservacion")
+    @JoinColumn(name="cinema")
+    @JsonIgnoreProperties({"reservations"})
     private Cinema cinema;
 
     @ManyToOne
-    @JoinColumn(name="clienteId")
-    @JsonIgnoreProperties("reservacion")
+    @JoinColumn(name="client")
+    @JsonIgnoreProperties({"messages","reservations"})
     private Cliente client;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdReservation() {
+        return idReservation;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
     public Date getStartDate() {
