@@ -17,18 +17,23 @@ public class Reservacion implements Serializable {
     private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
-    private String status;
+    private String status="created";
 
 
     @ManyToOne
     @JoinColumn(name="cinema")
-    @JsonIgnoreProperties({"reservations"})
+    @JsonIgnoreProperties({"message","reservations","cinema"})
     private Cinema cinema;
 
     @ManyToOne
     @JoinColumn(name="client")
     @JsonIgnoreProperties({"messages","reservations"})
     private Cliente client;
+
+    @OneToOne(cascade = {CascadeType.PERSIST},mappedBy="reservation")
+    @JoinColumn(name="idScore")
+    @JsonIgnoreProperties("reservation")
+    public Calificacion score;
 
     public Integer getIdReservation() {
         return idReservation;
@@ -76,5 +81,13 @@ public class Reservacion implements Serializable {
 
     public void setClient(Cliente client) {
         this.client = client;
+    }
+
+    public Calificacion getScore() {
+        return score;
+    }
+
+    public void setScore(Calificacion score) {
+        this.score = score;
     }
 }

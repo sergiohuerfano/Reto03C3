@@ -27,10 +27,6 @@ public class ReservacionController {
         return reservacionService.getReserva(id);
     }
 
-    /**
-     save llama al metodo POST cib el item nuevo
-     @return guardar el nuevo elemento en la tabla Reservation
-     */
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservacion save(@RequestBody Reservacion reserva){
