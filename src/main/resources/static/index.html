@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/funcionesCinema.js"></script>
+    <script src="js/funcionesCliente.js"></script>
+    <script src="js/funcionesMensaje.js"></script>
+    <style>table, th, td { border: 1px solid gray;border-collapse: collapse;}</style>
+
+    <title>Alquiler Cinemas</title>
+</head>
+<body>
+<h1>ALQUILER DE CINEMAS</h1>
+<h2>--------------------</h2>
+<h2>1. Cines</h2>
+<button onclick="consultarCinema()">Consultar Cines</button>
+
+<div>
+    <br>
+    <input type="text" id="owner" placeholder="owner">
+    <input type="number" id="capacity" placeholder="capacity">
+    <input type="number" id="category_id" placeholder="category_id">
+    <input type="text" id="name" placeholder="name">
+</div>
+
+<br>
+<button onclick="guardarCinema()">Guardar</button>
+<button onclick="editarCinema()">Actualizar</button>
+<br>
+<br>
+<div id="resultado1">
+
+</div>
+
+
+<br>
+<br>
+<h2>--------------------</h2>
+<h2>2. Clientes</h2>
+
+<button onclick="consultarCliente()">Consultar Clientes</button>
+
+<div>
+    <br>
+    <input type="text" id="nameC" placeholder="name">
+    <input type="text" id="email" placeholder="email">
+    <input type="number" id="age" placeholder="age">
+</div>
+<div id="resultado2">
+
+</div>
+
+<br>
+<button onclick="guardarCliente()">Guardar</button>
+<button onclick="editarCliente()">Actualizar</button>
+
+<br>
+<br>
+<h2>--------------------</h2>
+<h2>3. Mensajes</h2>
+
+<button onclick="consultarMsj()">Consultar Mensajes</button>
+
+<div>
+    <br>
+    <input type="text" id="messageText" placeholder="messageText">
+</div>
+<div id="resultado3">
+
+</div>
+<br>
+<button onclick="guardarMsj()">Guardar</button>
+<button onclick="editarMsj()">Actualizar</button>
+
+
+</body>
+</html>

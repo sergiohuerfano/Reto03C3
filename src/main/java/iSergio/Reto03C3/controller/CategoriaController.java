@@ -32,4 +32,5 @@ public class CategoriaController {
     public Categoria save(@RequestBody Categoria categoria){
         return categoriaService.save(categoria);
     }
+
 }

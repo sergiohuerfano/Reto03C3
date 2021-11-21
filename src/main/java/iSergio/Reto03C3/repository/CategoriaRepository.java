@@ -26,4 +26,6 @@ public class CategoriaRepository {
     public Categoria save(Categoria categoria){
         return categoriaCrudRepository.save(categoria);
     }
+
+
 }

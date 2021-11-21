@@ -6,10 +6,22 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+/*
+@author Sergio Huerfano
+Cinema
+ */
 @Entity
 @Table(name="cinemas")
 public class Cinema implements Serializable {
 
+    /**
+    Se deben suministrar los datos del sistema
+    @param id generado automaticamente
+     @param name nombre de la sala
+     @param owner propietario del cine
+     @param capacity capacidad de personas en la sala
+     @param description informacion complementaria
+    **/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -18,15 +30,26 @@ public class Cinema implements Serializable {
     private Integer capacity;
     private String description;
 
+    /*
+    @author Sergio Huerfano
+    */
     @ManyToOne
     @JoinColumn(name="category")
     @JsonIgnoreProperties("cinemas")
     private Categoria category;
 
+    /*
+    @author Sergio Huerfano
+    Relacion
+    */
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
-    @JsonIgnoreProperties({"cinemas"})
+    @JsonIgnoreProperties({"cinema", "client"})
     private List<Mensaje> messages;
 
+    /*
+    @author Sergio Huerfano
+    Relacion
+    */
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
     @JsonIgnoreProperties("cinemas")
     private List<Reservacion> reservations;
